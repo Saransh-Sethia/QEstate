@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.details-page-container {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 40px !important;
+    width: 80vw;
+    margin: auto auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10%;
+    margin-bottom: 100px;
+}
+
+.image-container img {
+    object-fit: cover;
+    width: 600px;
+    height: 650px;
+}
+
+.title {
+    margin-right: 20px;
+}
+
+.agent-details-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+}
+
+.agent-title{
+    font-size: 20px;
+}
+
+.contact-button {
+    background-color: rgb(255,0,0);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.property-details{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.property-details h1 {
+    margin: 0;
+    font-size: 4vw;
+}
+
+.error-message{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media only screen  and (max-width: 1092px){
+    .details-page-container {
+        font-family: 'Poppins', sans-serif;
+        width: 80vw;
+        margin-right: auto;
+        margin-left: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: flex-start;
+        gap: 2%;
+    }
+    
+}

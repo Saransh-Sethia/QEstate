@@ -10,22 +10,32 @@ import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import  CardActionArea  from '@mui/material/CardActionArea';
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const FeaturedListing = () => {
   const [listingData, setListingData] = useState([]);
+
+const navigate = useNavigate();
+// const {property_id} = useParams();
 
   const fetchListings = async () => {
     try {
       const response = await axios.get(
         `${config.backendEndpoint}/real-estate-data`
       );
-      const data = response.data.listings
-      setListingData(data.slice(0,8));
+      const datas = response.data.listings
+      setListingData(datas.slice(0,8));
     } catch (e) {
       setListingData([]);
       console.log("error", e);
     }
   };
+
+  const handleNavigate = () => {
+    // let property = Number(property_id)
+    navigate("/detail/12")
+  }
 
   useEffect(() => {
     fetchListings();
@@ -33,7 +43,7 @@ const FeaturedListing = () => {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid container rowSpacing={5} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
   {listingData.length === 0 ? (
     <Grid item>
       <div className='error-message'>
@@ -44,7 +54,7 @@ const FeaturedListing = () => {
     listingData.map((ele, index) => (
       <Grid item xs={12} sm={6} md={3}>
       <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+      <CardActionArea onClick={handleNavigate}>
         <CardMedia
           component="img"
           height="140"
@@ -52,14 +62,13 @@ const FeaturedListing = () => {
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
+          <Typography className="property-name" gutterBottom variant="h5" component="div">
+          {ele.property_name.slice(0,6)}
           </Typography>
-{ele.property_name.slice(0,6)}
         </CardContent>
         <CardActions>
           <div className="listing-detail">
-            <span className="property-price">Rs{ele.price}</span>
+            <span className="property-price">₹ {ele.price}</span>
             <span className="property-city">{ele.city.slice(0,5)}</span>
           </div>
         </CardActions>
